@@ -81,3 +81,32 @@ If you want build your own image of application instead of pulling from fleporcq
 # instead of pulling from fleporcq/symfony
 docker-compose build application
 ```
+
+### Troubleshooting
+
+The `symfony_application` container uses capabilities
+which are not compatible with `aufs` docker storage driver.  
+You can see your storage driver with `docker info`.  
+If by default your storage driver is `aufs`, you can use the `devicemapper` storage driver in place.
+Export your images and/or containers (because they will be unaccessible unless you revert the following instructions).
+
+To use `devicemapper` storage driver:
+
+stop docker service
+```bash
+sudo service docker stop
+```
+
+Open `/etc/default/docker` and set DOCKER_OPTS with:
+
+```bash
+DOCKER_OPTS="-s devicemapper"
+```
+
+restart docker service:
+
+```bash
+sudo service docker start
+```
+
+See this issue for more details: https://github.com/docker/docker/issues/6980#issuecomment-62723470
