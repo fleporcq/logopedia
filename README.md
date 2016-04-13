@@ -10,8 +10,9 @@
 ### Containers
 
 To launch the development containers, run this commands from project directory :
+
 ```bash
-# launch containers
+# launch containers. you can use -d option to run in detached mode
 docker-composer up
 ```
 Three containers are created:
@@ -31,17 +32,29 @@ me@symfony-container/var/www/html$ composer [command]
 me@symfony-container/var/www/html$ php bin/console [command]
 ```
 
-### Services
+### HTTP services
 
 If you didn't change ports mapping in `docker-compose.yml`:
  - The Symfony project is accessible from http://localhost:81
  - PHPMyAdmin is accessible from http://localhost:82
 
-### Notes
+### Configuration
 
-If you want build your own image of `./docker/symfony`:
+To override php configuration, feel free to edit `./php.ini`.  
+You can also edit the Symfony project's apache virtualhost file `./vhost.conf`.
+
+You must restart application service after any changes in these files.
 
 ```bash
-# build images
-docker-compose build
+docker-composer restart application
+```
+
+### Notes
+
+If you want build your own image of application instead of pulling from fleporcq/symfony :
+
+```bash
+# build application service image from ./docker/symfony/Dockerfile
+# instead of pulling from fleporcq/symfony
+docker-compose build application
 ```
