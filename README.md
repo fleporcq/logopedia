@@ -17,17 +17,22 @@ docker-composer pull
 # launch containers. you can use -d option to run in detached mode
 docker-composer up
 ```
-Three services are created:
- - `application`
- - `database`
- - `phpmyadmin`
+Three containers are created:
+ - `symfony_application`
+ - `symfony_database`
+ - `symfony_phpmyadmin`
 
-Composer is installed in `application` service.
+Composer is installed in `symfony_application` container.
 
-To enter in bash mode in `application` service:
+To enter in bash mode in `symfony_application` container:
 
 ```bash
-docker-compose run application bash
+# exec bash into the running container 'symfony_application'
+docker exec -it symfony_application bash
+# or start a new application container to run bash
+# --rm option is for remove container after exiting bash
+docker-compose run --rm application bash
+
 # into container :
 # run composer
 me@symfony-container/var/www/html$ composer [command]
@@ -55,7 +60,7 @@ docker-composer restart application
 ### Symfony  - first steps
 
 ```bash
-docker-compose run --rm application bash
+docker exec -it symfony_application bash
 # Into container :
 # Install project dependencies composer
 # when composer ask for the database keep all default params except for host,
