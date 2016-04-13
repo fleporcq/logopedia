@@ -12,6 +12,8 @@
 To launch the development containers, run this commands from project directory :
 
 ```bash
+# pull images from docker hub
+docker-composer pull
 # launch containers. you can use -d option to run in detached mode
 docker-composer up
 ```
@@ -25,7 +27,10 @@ Composer is installed in `symfony_application` container.
 To enter in bash mode in `symfony_application` container:
 
 ```bash
+docker-compose run application bash
+# or
 docker exec -it symfony_application bash
+# into container :
 # run composer
 me@symfony-container/var/www/html$ composer [command]
 # run Symfony bin/console
@@ -47,6 +52,21 @@ You must restart application service after any changes in these files.
 
 ```bash
 docker-composer restart application
+```
+
+### Symfony  - first steps
+
+```bash
+docker-compose run application bash
+# Into container :
+# Install project dependencies composer
+# when composer ask for the database keep all default params except for host,
+# fill this value with 'database' (the docker link to database container)
+me@symfony-container/var/www/html$ composer update
+# create the project database
+me@symfony-container/var/www/html$ php bin/console doctrine:database:create
+# create the project schema
+me@symfony-container/var/www/html$ php bin/console doctrine:schema:create
 ```
 
 ### Notes
