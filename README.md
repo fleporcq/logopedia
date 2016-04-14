@@ -85,14 +85,14 @@ docker-compose build application
 ### Troubleshooting
 
 The `symfony_application` container uses capabilities
-which are not compatible with `aufs` docker storage driver.  
+which may be not compatible with `aufs` docker storage driver depending your host.  
 You can see your storage driver with `docker info`.  
 If by default your storage driver is `aufs`, you can use the `devicemapper` storage driver in place.
 Export your images and/or containers (because they will be unaccessible unless you revert the following instructions).
 
 To use `devicemapper` storage driver:
 
-stop docker service
+Stop docker service: 
 ```bash
 sudo service docker stop
 ```
@@ -103,7 +103,7 @@ Open `/etc/default/docker` and set DOCKER_OPTS with:
 DOCKER_OPTS="-s devicemapper"
 ```
 
-restart docker service:
+Restart docker service:
 
 ```bash
 sudo service docker start
