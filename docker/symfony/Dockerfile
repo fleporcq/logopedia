@@ -23,9 +23,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN groupadd -f -g 1000 me && useradd -u 1000 -g me me
 
 # Allow apache to run with 'me' user
-RUN setcap 'cap_net_bind_service=+ep' /usr/sbin/apache2
 RUN chown me:me /var/lock/apache2
 RUN chown me:me /var/run/apache2
+# Define apache listen port on a port greater than 1024 to allow a non-root user (me) to start apache
+RUN sed -i 's/Listen\ 80/Listen\ 1080/g' /etc/apache2/apache2.conf
 
 # Create home for 'me' user for composer caches
 RUN mkdir /home/me && chown me:me /home/me
+
+EXPOSE 1080

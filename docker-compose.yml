@@ -6,7 +6,7 @@ services:
         image: fleporcq/symfony:3.0
         build: ./docker/symfony/
         ports:
-            - 81:80
+            - 81:1080
         volumes:
             - .:/var/www/html
             - ./php.ini:/usr/local/etc/php/php.ini
