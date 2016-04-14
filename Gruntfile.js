@@ -15,31 +15,10 @@ module.exports = function(grunt) {
                         expand: true,
                         flatten: true,
                         src: [
-                            './bower_components/font-awesome/css/font-awesome.min.css',
-                            './bower_components/metisMenu/dist/metisMenu.min.css',
-                        ],
-                        dest: './web/assets/stylesheets/',
-                        filter: 'isFile',
-                    },
-                    {
-                        expand: true,
-                        flatten: true,
-                        src: [
                             './bower_components/jquery/dist/jquery.min.js',
                             './bower_components/bootstrap/dist/js/bootstrap.min.js',
-                            './bower_components/metisMenu/dist/metisMenu.min.js',
-                            './bower_components/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js',
                         ],
                         dest: './web/assets/javascripts/',
-                        filter: 'isFile',
-                    },
-                    {
-                        expand: true,
-                        flatten: true,
-                        src: [
-                            './bower_components/font-awesome/fonts/**',
-                        ],
-                        dest: './web/assets/fonts/',
                         filter: 'isFile',
                     }
                 ]
@@ -51,9 +30,8 @@ module.exports = function(grunt) {
                   compress: true,  //minifying the result
                 },
                 files: {
-                  // compiling sb-admin-2.less into sb-admin-2.min.css
                   "./web/assets/stylesheets/bootstrap.min.css": "./app/Resources/assets/stylesheets/bootstrap.less",
-                  "./web/assets/stylesheets/sb-admin-2.min.css": "./app/Resources/assets/stylesheets/sb-admin-2.less",
+                  "./web/assets/stylesheets/dashboard.min.css": "./app/Resources/assets/stylesheets/dashboard.less",
                 }
             }
         },

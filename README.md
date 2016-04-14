@@ -78,7 +78,7 @@ docker-compose build application
 docker exec -it symfony_application bash
 
 # once logged in the container :
-# install project dependencies composer
+# install project dependencies with composer
 # when composer ask for the database keep all default params except for host,
 # fill this value with 'database' (the docker link to database container)
 me@symfony-container/var/www/html$ composer update
