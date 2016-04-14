@@ -46,6 +46,11 @@ If you didn't change ports mapping in `docker-compose.yml`:
  - The Symfony project is accessible from http://localhost:81
  - PHPMyAdmin is accessible from http://localhost:82
 
+### Database
+
+The `symfony_database` container runs a MySQL server which store data
+in the `./docker/mysql/data` volume.
+
 ### Configuration
 
 To override php configuration, feel free to edit `./php.ini`.  
@@ -74,7 +79,7 @@ me@symfony-container/var/www/html$ php bin/console doctrine:schema:create
 
 ### Notes
 
-If you want build your own image of application instead of pulling from fleporcq/symfony :
+If you want build your own image of application service instead of pulling from fleporcq/symfony :
 
 ```bash
 # build application service image from ./docker/symfony/Dockerfile

@@ -20,4 +20,6 @@
 # Docker
 
 /logs/*
-!logs/.gitkeep
+!/logs/.gitkeep
+/docker/mysql/data/*
+!/docker/mysql/data/.gitkeep
