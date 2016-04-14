@@ -91,5 +91,5 @@ me@symfony-container/var/www/html$ npm install
 # install bower dependencies
 me@symfony-container/var/www/html$ bower install
 # run dashboard grunt task
-me@symfony-container/var/www/html$ grunt dashboard
+me@symfony-container/var/www/html$ grunt
 ```

@@ -52,6 +52,7 @@ module.exports = function(grunt) {
     // Plugin loading
     require('load-grunt-tasks')(grunt);
     // Task definition
-    grunt.registerTask('default', ['watch']);
     grunt.registerTask('dashboard', ['less:dashboard', 'copy:dashboard']);
+    grunt.registerTask('main', ['dashboard']);
+    grunt.registerTask('default', ['main']);
 };
