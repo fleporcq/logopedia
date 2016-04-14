@@ -15,8 +15,6 @@ module.exports = function(grunt) {
                         expand: true,
                         flatten: true,
                         src: [
-                            './bower_components/bootstrap/dist/css/bootstrap.min.css',
-                            './bower_components/startbootstrap-sb-admin-2/dist/css/sb-admin-2.css',
                             './bower_components/font-awesome/css/font-awesome.min.css',
                             './bower_components/metisMenu/dist/metisMenu.min.css',
                         ],
@@ -48,7 +46,16 @@ module.exports = function(grunt) {
             }
         },
         less: {
-            //...
+            dashboard: {
+                options: {
+                  compress: true,  //minifying the result
+                },
+                files: {
+                  // compiling sb-admin-2.less into sb-admin-2.min.css
+                  "./web/assets/stylesheets/bootstrap.min.css": "./app/Resources/assets/stylesheets/bootstrap.less",
+                  "./web/assets/stylesheets/sb-admin-2.min.css": "./app/Resources/assets/stylesheets/sb-admin-2.less",
+                }
+            }
         },
         uglify: {
             //...
@@ -58,16 +65,15 @@ module.exports = function(grunt) {
         },
         watch: {
             //...
+        },
+        dashboard: {
+
         }
     });
 
     // Plugin loading
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-
+    require('load-grunt-tasks')(grunt);
     // Task definition
     grunt.registerTask('default', ['watch']);
+    grunt.registerTask('dashboard', ['less:dashboard', 'copy:dashboard']);
 };
