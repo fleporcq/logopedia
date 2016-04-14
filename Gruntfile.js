@@ -14,8 +14,8 @@ module.exports = function(grunt) {
                   compress: true,  //minifying the result
                 },
                 files: {
-                  //compiling frontend.less into frontend.css
-                  "./web/assets/stylesheets/backend.css": "./app/Resources/assets/stylesheets/backend.less"
+                  //compiling dashboard.less into dashboard.css
+                  "./web/assets/stylesheets/dashboard.css": "./app/Resources/assets/stylesheets/dashboard.less"
                 }
             }
         },
