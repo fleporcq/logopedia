@@ -90,6 +90,6 @@ me@symfony-container/var/www/html$ php bin/console doctrine:schema:create
 me@symfony-container/var/www/html$ npm install
 # install bower dependencies
 me@symfony-container/var/www/html$ bower install
-# run dashboard grunt task
+# run default grunt task
 me@symfony-container/var/www/html$ grunt
 ```
